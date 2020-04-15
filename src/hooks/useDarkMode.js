@@ -8,18 +8,17 @@ import useLocalStorage from "./useLocalStorage";
 
 export const useDarkMode = (key, initialValue, cb) => {
     const [value, setValue] = useLocalStorage(key, initialValue)
-   
-    function makeDark () {
-        if (value = true){
-          useEffect(document.body.classList.add('dark-mode'));        
-        } else {
-                useEffect(document.body.classList.remove('dark-mode'));    
-            }
-    }
-
-     
-
-    return [value, makeDark]
+    const toggleMode = e => {
+        e.preventDefault();
+        setValue(!value);
+      };
+    
+    useEffect((value = true)  => {document.body.classList.add('dark-mode')});        
+        // } else {
+        //         useEffect(() => {document.body.classList.remove('dark-mode')});    
+        //     }
+    
+    return [value, toggleMode]
     
 };
 
